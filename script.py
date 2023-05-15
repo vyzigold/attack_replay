@@ -46,11 +46,19 @@ def show_input(filename):
     while len((sample := reader.get_input_sample().decode("utf-8"))) != 0:
         print(sample, end='')
 
-if len(sys.argv) != 3:
-    print("use either --input or --output")
+if len(sys.argv) == 3:
+    if sys.argv[1] == "--input":
+        show_input(sys.argv[2])
 
-if sys.argv[1] == "--input":
-    show_input(sys.argv[2])
+    elif sys.argv[1] == "--output":
+        show_output(sys.argv[2])
+    else:
+        print("./script.py --input path/to/file")
+        print("or")
+        print("./script.py --output path/to/file")
 
-if sys.argv[1] == "--output":
-    show_output(sys.argv[2])
+else:
+    print("./script.py --input path/to/file")
+    print("or")
+    print("./script.py --output path/to/file")
+
